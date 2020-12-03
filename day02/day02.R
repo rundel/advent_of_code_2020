@@ -31,18 +31,14 @@ g = function(file) {
         a = as.integer(x[1]); b = as.integer(x[2])
         p = x[3]; s = x[4]
 
-        char1 = substr(p, a, a)
-        char2 = substr(p, b, b)
+        char1 = substr(s, a, a)
+        char2 = substr(s, b, b)
 
-        print(s)
-        s = stringr::str_remove_all(s, paste0("[^",p,"]"))
-        cat(nchar(s),a ,b, (nchar(s) >= a) & (nchar(s) <= b), "\n")
-        (nchar(s) >= a) & (nchar(s) <= b)
+        (char1 == p | char2 == p) & (char1 != char2)
       }
     )
 }
 
-sum( f("day02/test.txt") )
-sum( f("day02/input.txt") )
+sum( g("day02/test.txt") )
+sum( g("day02/input.txt") )
 
-556
