@@ -101,6 +101,7 @@ g_crt("day13/input.txt") %>% formatC(digits=16)
 g_crt2 = function(file) {
   d = parse(file)
 
+  # Modified version of the function that allows the use of Rmpfr values
   source("day13/chinese.R")
 
   chinese(
