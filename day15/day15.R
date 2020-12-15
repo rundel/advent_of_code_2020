@@ -55,7 +55,28 @@ f(input, 1e4) %>% plot()
 #   cur_val
 # }
 
-Rcpp::sourceCpp("day15/day15.cpp")
+g2 = function(x, end = 2020) {
+  res = integer()
+  for(i in 1:(length(x)-1)) {
+    res[ x[i] + 1 ] = i
+  }
 
-g(test, 30000000)
-g(input, 30000000)
+  cur_val = x[length(x)]
+
+  for (i in seq(length(x), end-1)) {
+    if (is.na(res[cur_val + 1])) {
+      new_val = 0
+    } else {
+      new_val = i - res[cur_val + 1]
+    }
+
+    res[cur_val + 1] = i
+    cur_val = new_val
+  }
+
+  cur_val
+}
+
+g2(test, 30000000)
+g2(input, 30000000)
+
