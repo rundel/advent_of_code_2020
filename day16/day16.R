@@ -136,3 +136,8 @@ g = function(file) {
 
 g("day16/test.txt")
 g("day16/test2.txt")
+
+g("day16/input.txt") %>%
+  {.[ grepl("^departure", names(.)) ]} %>%
+  prod()
+
